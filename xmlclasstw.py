@@ -1,7 +1,7 @@
 __author__ = 'User'
 
 import _elementtree as ET
-
+import tweet as tWclass
 '''
 xml class to store data?
 # build a tree structure
@@ -70,15 +70,27 @@ class dataToXml():
 
         #tweet = self.tw
 
-        tw = {'author': 'david', 'tweet': 'supercool #bs', 'time':'10:12'}
+        tw = tWclass.createTwit("daviddincognit","primer tweet","21-03-2015 19:55")
 
         return tw
 
     def addToXml(self):
         tree = ET.parse("twitter.xml")
         tweet = self.getTweets()
+        print (tweet)
 
 
+        try:
+            print ("trying to insert a fuckin element to an xml tree")
+
+        except:
+            print ("the errororor")
+
+
+
+    def readXML(self):
+
+        xmltree = ET.parse("twitter.xml")
 
 
         return

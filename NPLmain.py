@@ -12,6 +12,16 @@ xmlTest = xc.dataToXml()
 
 print("there we go")
 
-dataE.dataFrom(2)
+dataE.dataFrom(1)
 
-xmlTest.createXML(2)
+xmlTest.createXML()
+
+def main():
+
+    xmlTest.addToXml()
+    return
+
+
+
+if __name__ == '__main__':
+  main()
