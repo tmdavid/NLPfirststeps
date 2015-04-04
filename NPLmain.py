@@ -14,7 +14,7 @@ print("there we go")
 
 dataE.dataFrom(1)
 
-xmlTest.createXML()
+#xmlTest.createXML()
 
 def main():
 

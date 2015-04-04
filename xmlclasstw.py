@@ -48,7 +48,7 @@ class dataToXml():
         return
 
     def createTree(self):
-        root = ET.Element("Data")
+        root = ET.Element("root")
         root.text = "Full data collection for nlp from twitter"
         topic = "new topic"
         head = ET.SubElement(root, "topic")
@@ -76,15 +76,52 @@ class dataToXml():
 
     def addToXml(self):
         tree = ET.parse("twitter.xml")
+        root = tree.getroot()
         tweet = self.getTweets()
-        print (tweet)
 
-
+        numberOfElements = len(root)
+        newNodeStr = 'topic'
         try:
             print ("trying to insert a fuckin element to an xml tree")
 
-        except:
-            print ("the errororor")
+            topic = "new topic"
+            head = ET.SubElement(root, "topic")
+            head.text = topic
+
+            insElement = ET.Element(newNodeStr)
+
+            newNodeName = ET.SubElement(head, 'author')
+            newNodeName.text = tweet.get('author')
+
+            newNodeName = ET.SubElement(head,'tweet')
+            newNodeName.text = tweet.get('tweet')
+
+            newNodeName = ET.SubElement(head,'time')
+            newNodeName.text = tweet.get('time')
+
+            root.insert(numberOfElements, insElement)
+
+            '''
+            newNodeName = ET.Element('topic')
+            newNodeName.text = 'new topic'
+            insElement.append(newNodeName)
+            newNodeName = ET.Element('author')
+            newNodeName.text = tweet.get('author')
+            insElement.append(newNodeName)
+            newNodeName = ET.Element('tweet')
+            newNodeName.text = tweet.get('tweet')
+            insElement.append(newNodeName)
+            newNodeName = ET.Element('time')
+            newNodeName.text = tweet.get('time')
+            insElement.append(newNodeName)
+            root.insert(numberOfElements, insElement)
+            '''
+
+            tree.write('twitter.xml')
+
+        except :
+            print ("Couldnt Insert the tweet:")
+            print (tweet)
 
 
 
