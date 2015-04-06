@@ -16,12 +16,16 @@ class dataToXml():
     def createTree(self):
         root = ET.Element("root")
         root.text = "Full data collection for nlp from twitter"
-        topic = "new topic"
-        head = ET.SubElement(root, "topic")
-        head.text = topic
-        author = ET.SubElement(head, "author")
-        tweet = ET.SubElement(head, "tweet")
-        time = ET.SubElement(head, "time")
+        topictext = "new topic"
+
+        head = ET.SubElement(root, 'tweet')
+        topic = ET.SubElement(head, 'topic')
+        topic.set('topic', topictext)
+
+
+        author = ET.SubElement(topic, "author")
+        tweet = ET.SubElement(topic, "text")
+        time = ET.SubElement(topic, "time")
         return root
 
     def createXML(self):
@@ -47,20 +51,24 @@ class dataToXml():
 
         numberOfElements = len(root)
         try:
-            print ("trying to insert a fuckin element to an xml tree")
+            print ("trying to insert an element to our XML")
+            '''
+            head = ET.SubElement(root, 'tweet')
+            topic = ET.SubElement(head, 'topic')
+            topic.set('topic', topictext)
+            '''
+            topictext = "david"
+            head = ET.SubElement(root, 'tweet')
+            topic = ET.SubElement(head, 'topic')
+            topic.set('topic',topictext)
 
-            topic = "NPL"
-            head = ET.SubElement(root, "topic")
-            head.text = topic
-
-
-            newNodeName = ET.SubElement(head, 'author')
+            newNodeName = ET.SubElement(topic, 'author')
             newNodeName.text = tweet.get('author')
 
-            newNodeName = ET.SubElement(head,'tweet')
+            newNodeName = ET.SubElement(topic,'text')
             newNodeName.text = tweet.get('tweet')
 
-            newNodeName = ET.SubElement(head,'time')
+            newNodeName = ET.SubElement(topic,'time')
             newNodeName.text = tweet.get('time')
 
             #root.insert(numberOfElements, head)
@@ -82,11 +90,14 @@ class dataToXml():
     def getTweetsByTopic(self, topic):
 
         allData = dataToXml()
+
         alltweets = allData.readXML()
         root = alltweets.getroot()
-        tweets = root.findall('topic')
+        search = "tweet/topic[@topic='" + topic +"']"
+        tweets = root.findall(search) #("tweet/topic[@topic='david']") #[@topic='NPL']")
+        print(search)
+        print 'tweets found: ', len(tweets)
         for e in tweets:
-            print (e.text)
-
+            print e.find('author').text
 
         return

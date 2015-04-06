@@ -18,8 +18,8 @@ dataE.dataFrom(1)
 
 def main():
 
-    xmlTest.addToXml()
-    xmlTest.getTweetsByTopic('NPL')
+    #xmlTest.addToXml()
+    xmlTest.getTweetsByTopic('david')
     return
 
 
