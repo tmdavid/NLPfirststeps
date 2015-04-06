@@ -19,6 +19,7 @@ dataE.dataFrom(1)
 def main():
 
     xmlTest.addToXml()
+    xmlTest.getTweetsByTopic('NPL')
     return
 
 
