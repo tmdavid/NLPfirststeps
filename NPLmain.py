@@ -2,6 +2,7 @@ __author__ = 'User'
 
 import dataExtractor as dE
 import xmlclasstw as xc
+import twitterAPI as tAPI
 
 # @tmdavid
 # NPL first steps???
@@ -9,6 +10,8 @@ import xmlclasstw as xc
 
 dataE = dE.dataExtraction()
 xmlTest = xc.dataToXml()
+twitAPI = tAPI.twitterAPI()
+stream = tAPI.listener(1,600)
 
 print("there we go")
 
@@ -19,7 +22,13 @@ dataE.dataFrom(1)
 def main():
 
     #xmlTest.addToXml()
-    xmlTest.getTweetsByTopic('david')
+    #xmlTest.getTweetsByTopic('david')
+    twitAPI.initTwitter()
+
+    #twitAPI.saySomething()
+    twitAPI.retrieveData()
+    stream.getDatabyTopic()
+
     return
 
 
