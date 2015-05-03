@@ -3,6 +3,7 @@ __author__ = 'User'
 import dataExtractor as dE
 import xmlclasstw as xc
 import twitterAPI as tAPI
+
 import time
 
 # @tmdavid
@@ -22,16 +23,24 @@ print("there we go")
 
 def main():
 
+    print '1. Retrieve DataStream On topic'
+    print '2. Get User Info'
+    print '3. GTFO'
+    todo = int(raw_input())
     #xmlTest.addToXml()
-    #xmlTest.getTweetsByTopic('david')
-    #twitAPI.initTwitter()
-
-    #twitAPI.saySomething()
-    #twitAPI.retrieveData()
-    while (1<2):
-        print 'getting data from:', stream.keyword_list
-        stream.getDatabyTopic()
-
+    if (todo == 2):
+        print 'Which user?\n'
+        username2check = raw_input()
+        twitAPI.initTwitter(username2check)
+        #twitAPI.saySomething()
+        twitAPI.retrieveData()
+        main()
+    elif (todo == 1):
+        while (True):
+            print 'getting data from:', stream.keyword_list
+            stream.getDatabyTopic()
+    elif (todo == 3):
+        exit('bye bye!')
     return
 
 
