@@ -16,12 +16,6 @@ import operator
 
 urllib3.contrib.pyopenssl.inject_into_urllib3()
 
-'''
-CONS_KEY = 'J0RgdVza5oh0jl3YbaDaldwvX'
-CONS_KEY_SECR = 'SJGXtGGEeTY6lue872W0wuwZJmopD65UMfAjFeognzKR0cRUrI'
-ACCESS_TOKEN = '251285470-uLNlT7PLZW5UqlyacbouPksYgxc9r4aJdUXw9Xyt'
-ACCES_TOKEN_SECR = 'qYMx3Z5kzCfF6EoONVo810hmOzQQVVtnJYYjHogeM3jK7'
-'''
 
 class twitterAPI():
 
